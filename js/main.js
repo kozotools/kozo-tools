@@ -12,15 +12,17 @@
     });
 
     function generateQRCode() {
-        var base_url = 'http://chart.apis.google.com/chart?chs=250x250&cht=qr&chld=l|0&chl=';
-        var text = escape($.trim($('#url').val()));
+        var text = $.trim($('#url').val());
 
-        $('#qr-image').remove();
+        $('#qrcode').empty();
 
         if (text.length) {
-            var url = base_url + text;
-
-            $('#qrcode').append('<img src="' + url + '" alt="generating..." id="qr-image" class="qr-image" />')
+            new QRCode(document.getElementById('qrcode'), {
+                text: text,
+                width: 250,
+                height: 250,
+                correctLevel: QRCode.CorrectLevel.L
+            });
         }
         return false;
     }
@@ -34,9 +36,6 @@
                 generateQRCode();
                 return false;
             }
-        });
-        $('#url').keypress(function() {
-            generateQRCode();
         });
     });
 

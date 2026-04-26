@@ -196,3 +196,9 @@ footer {
     color: #ccc;
     border-radius: 5px;
 }
+
+#qrcode {
+    display: flex;
+    justify-content: center;
+    margin-block: 1em;
+}
